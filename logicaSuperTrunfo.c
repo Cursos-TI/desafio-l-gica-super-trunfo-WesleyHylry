@@ -105,9 +105,9 @@ int main() {
         printf("Resultado: Empate!\n");
     } */
 
-
+//comentando as partes substituidas
     // Novo menu interativo para escolha do atributo 
-    int escolha;
+    /*int escolha;
     printf("\nEscolha o atributo para comparar as cartas:\n");
     printf("1 - Populacao\n");
     printf("2 - Area\n");
@@ -117,9 +117,9 @@ int main() {
     printf("Opcao: ");
     scanf("%d", &escolha);
 
-    printf("\n=== Comparacao de cartas ===\n");
+    printf("\n=== Comparacao de cartas ===\n");*/
 
-    switch (escolha) {
+    /*switch (escolha) {
         case 1: 
         // Populacao
             printf("Atributo escolhido: Populacao\n");
@@ -188,6 +188,54 @@ int main() {
         default:
             printf("Opcao invalida!\n");
             break;
+    }*/
+    // agora em vez de um atributo, dois
+    //mantendo os anteriores como comentario 
+    int atributo1, atributo2;
+
+    printf("\n=== COMPARACAO AVANCADA ===\n");
+    printf("Escolha o primeiro atributo:\n");
+    printf("1 - Populacao\n2 - Area\n3 - PIB\n4 - Pontos Turisticos\n5 - Densidade Populacional\nOpcao: ");
+    scanf("%d", &atributo1);
+
+    printf("Escolha o segundo atributo (diferente do primeiro):\n");
+    scanf("%d", &atributo2);
+
+    while(atributo2 == atributo1){
+        printf("Nao pode repetir! Escolha outro atributo: ");
+        scanf("%d", &atributo2);
     }
+
+    float valor1_atr1, valor2_atr1, valor1_atr2, valor2_atr2;
+
+    switch(atributo1){
+        case 1: valor1_atr1 = populacao1; valor2_atr1 = populacao2; break;
+        case 2: valor1_atr1 = area1; valor2_atr1 = area2; break;
+        case 3: valor1_atr1 = pib1; valor2_atr1 = pib2; break;
+        case 4: valor1_atr1 = pontosTuristicos1; valor2_atr1 = pontosTuristicos2; break;
+        case 5: valor1_atr1 = -densidade1; valor2_atr1 = -densidade2; break; // negativo pq menor vence
+    }
+    switch(atributo2){
+        case 1: valor1_atr2 = populacao1; valor2_atr2 = populacao2; break;
+        case 2: valor1_atr2 = area1; valor2_atr2 = area2; break;
+        case 3: valor1_atr2 = pib1; valor2_atr2 = pib2; break;
+        case 4: valor1_atr2 = pontosTuristicos1; valor2_atr2 = pontosTuristicos2; break;
+        case 5: valor1_atr2 = -densidade1; valor2_atr2 = -densidade2; break;
+    }
+
+    float soma1 = valor1_atr1 + valor1_atr2;
+    float soma2 = valor2_atr1 + valor2_atr2;
+
+    printf("\nResultado avancado:\n");
+    printf("Carta 1 (%s) soma = %.2f\n", nomeCidade1, soma1);
+    printf("Carta 2 (%s) soma = %.2f\n", nomeCidade2, soma2);
+
+    if(soma1 > soma2)
+        printf("Resultado Final: Carta 1 venceu!\n");
+    else if(soma2 > soma1)
+        printf("Resultado Final: Carta 2 venceu!\n");
+    else
+        printf("Resultado Final: Empate!\n");
+
     return 0;
 }
